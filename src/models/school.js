@@ -8,6 +8,7 @@ const SchoolSchema = new mongoose.Schema(
         uf: { type: String, required: true },
         city: { type: String, required: true },
         address: { type: String, required: true },
+        neighborhood: { type: String, required: true },
         cep: { type: String, required: true },
         phone: { type: String, required: true },
         email: { type: String, unique: true },

@@ -32,5 +32,9 @@
     "nodemailer": "^6.9.4",
     "nodemon": "^2.0.22",
     "validar-cpf": "^3.0.0"
+  },
+  "devDependencies": {
+    "cypress": "^13.1.0",
+    "jest": "^29.6.4"
   }
 }
