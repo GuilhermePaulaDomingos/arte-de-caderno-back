@@ -29,7 +29,7 @@ class SchoolController {
         }
     
         insertSchool = async (req, res, next) => {
-            const {name, code, uf, city, address, cep, phone, email, site} = req.body;
+            const {name, code, uf, city, address, cep, phone} = req.body;
             if(name === null || code === null || uf === null || city === null || address === null || cep === null || phone === null){
                 return res.status(400).json({message: 'All fields are required'});
             }

@@ -11,8 +11,8 @@ const SchoolSchema = new mongoose.Schema(
         neighborhood: { type: String, required: true },
         cep: { type: String, required: true },
         phone: { type: String, required: true },
-        email: { type: String, unique: true },
-        site: { type: String}
+        email: { type: String,required: false, unique: true },
+        site: { type: String,required: false}
     },
     {
         versionKey: false
