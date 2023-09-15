@@ -1,6 +1,7 @@
 import Draw from "../models/draw.js";
 import Student from "../models/student.js";
 
+
 class DrawController{
 
     listClassifiedDraws = async (req, res, next) => {
@@ -70,25 +71,6 @@ class DrawController{
         }
     }
 
-    insertDraw = async (req, res, next) => {
-        try{
-            const draw = new Draw(req.body);
-            let student = await Student.findById(draw.author);
-            if(student === null){
-                return res.status(400).json({message: 'Student not found'});
-            }
-            student.drawsId.push(draw._id);
-            
-            await student.save();
-
-            await draw.save();
-            
-            res.status(201).json(draw);
-        }
-        catch(err){
-            next(err);
-        }
-    }
 
     insertScoreDraw = async (req, res, next) => {
         const {id} = req.params;
@@ -132,6 +114,42 @@ class DrawController{
             next(err);
         }
     }
+
+
+    //modificado
+    insertDraw = async (req, res, next) => {
+        try{
+            //modificado aqui
+            const{title} = req.body
+            const file = req.file
+
+            const draw = new Draw({
+               title,
+               linkImage: file.path,
+                
+            });
+
+            let student = await Student.findById(draw.author);
+            if(student === null){
+                return res.status(400).json({message: 'Student not found'});
+            }
+            
+            student.drawsId.push(draw._id);
+            
+            await student.save();
+
+            await draw.save();
+            
+            res.status(201).json(draw);
+        }
+        catch(err){
+            next(err);
+        }
+    }
+
+
+
+
 }
 
 export default new DrawController;

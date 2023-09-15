@@ -8,7 +8,7 @@ import drawRoute from './drawRoute.js';
 import cepRoute from './cepRoute.js';
 import validatorCpfRoute from './validatorCpfRoute.js';
 import evaluatorRoute from './evaluatorRoute.js';
-import noticeRouter from './noviceRoute.js';
+
 
 const routes = (app) => {
   app.route('/').get((req, res) => {
@@ -26,8 +26,8 @@ const routes = (app) => {
     professorRoute,
     studentRoute,
     drawRoute,
-    evaluatorRoute,
-    noticeRouter
+    evaluatorRoute
+    
   )
 }
 
